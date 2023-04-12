@@ -1,0 +1,42 @@
+﻿@using OnlineExamination.Models.DTO
+
+@model LoginDto
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="float: right;margin-top: 100px;" class="col-md-6">
+    <div class="card-header bg-primary text-white text-uppercase">
+        <h4>Online Examination</h4>
+    </div>
+    <label style="color:red;">@ViewBag.InvalidUser</label>
+    <div class="card-body">
+        <form asp-action="Login" asp-controller="Account">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="UserName" class="lable-control"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                </div>
+                  
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Password" class="lable-control"></label>
+                        <input asp-for="Password" class="form-control" type="password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            </br>
+            <div class="form-group">
+                <button style="float:right;" type="submit" class="btn btn-primary rounded-0">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+

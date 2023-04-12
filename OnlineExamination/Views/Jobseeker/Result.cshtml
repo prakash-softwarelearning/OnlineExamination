@@ -1,0 +1,38 @@
+﻿@using OnlineExamination.Models.DTO
+@using static OnlineExamination.Models.EnumData
+@model Result
+@{
+    ViewData["Title"] = "OnlineTest";
+    Layout = "~/Views/Shared/_JobseekerLayoutPage.cshtml";
+}
+
+<div class="card">
+    <div class="card-header bg-primary text-white text-uppercase">
+        @if (Model.Results == CandiateResult.Pass.ToString())
+        {
+            <h4>Congratulations you are qualified.</h4>
+        }else
+        {
+            <h4>Sorry you are not qualified.</h4>
+        }
+    </div>
+    <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Total Questions: @Model.NoOfQuestions</label><br />
+                        <label>Total Ettempt: @Model.TotalQuestionEttempt</label><br />
+                        <label>Correct Answers: @Model.CorrectAnswers</label><br />
+                        <label>Percentage: @Model.Percentage</label><br />
+                            <label>Result: @Model.Results</label><br />
+                    </div>
+                </div>
+            </div>
+            <br />
+    </div>
+</div>
+
+
+
+
+

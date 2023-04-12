@@ -1,0 +1,98 @@
+﻿@using OnlineExamination.Models.DTO;
+@model QuesAnsCreateDto
+@{
+    ViewData["Title"] = "QuesAnsCreate";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="card">
+    <div class="card-header bg-primary text-white text-uppercase">
+        <h4>Add Exam Paper</h4>
+    </div>
+    <label style="color:green;">@ViewBag.DataSaved</label>
+    <div class="card-body">
+        <form asp-action="QuesAnsCreate" asp-controller="Admin">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="QuestionsName" class="lable-control"></label>
+                        <input asp-for="QuestionsName" class="form-control" />
+                        <span asp-validation-for="QuestionsName" class="text-danger"></span>
+                    </div>
+                </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Option1" class="lable-control"></label>
+                        <input asp-for="Option1" class="form-control"   />
+                        <span asp-validation-for="Option1" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+               <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Option2" class="lable-control"></label>
+                        <input asp-for="Option2" class="form-control" />
+                        <span asp-validation-for="Option2" class="text-danger"></span>
+                    </div>
+                </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Option3" class="lable-control"></label>
+                        <input asp-for="Option3" class="form-control"   />
+                        <span asp-validation-for="Option3" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+               <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Option4" class="lable-control"></label>
+                        <input asp-for="Option4" class="form-control" />
+                        <span asp-validation-for="Option4" class="text-danger"></span>
+                    </div>
+                </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="AnswerName" class="lable-control"></label>
+                        <input asp-for="AnswerName" class="form-control"   />
+                        <span asp-validation-for="AnswerName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+               <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Technology" class="lable-control"></label>
+                         <select asp-for="Technology" asp-items="ViewBag.Tech" class="form-control">
+                           <option selected="selected" value="">Please select</option>
+                        </select>
+                        <span asp-validation-for="Technology" class="text-danger"></span>
+                    </div>
+                </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="QuestionLevel" class="lable-control"></label>
+                        <select asp-for="QuestionLevel" asp-items="ViewBag.EnumList" class="form-control">
+                           <option selected="selected" value="">Please select</option>
+                        </select>
+                        <span asp-validation-for="QuestionLevel" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+               <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="ExperienceShouldBe" class="lable-control"></label>
+                        <input asp-for="ExperienceShouldBe" class="form-control" />
+                        <span asp-validation-for="ExperienceShouldBe" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            </br>
+            <div class="form-group">
+                <button style="float:right;" type="submit" class="btn btn-primary rounded-0">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

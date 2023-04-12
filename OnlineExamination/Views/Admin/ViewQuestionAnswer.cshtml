@@ -1,0 +1,84 @@
+﻿@using OnlineExamination.Models.DTO;
+@model List<OnlineTestDto>
+@{
+    ViewData["Title"] = "ViewQuestionAnswer";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+<style type="text/css">
+    .fixTableHead {
+        overflow-y: auto;
+        height: 400px;
+    }
+
+        .fixTableHead thead th {
+            position: sticky;
+            top: 0;
+        }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th,
+    td {
+        padding: 8px 15px;
+        border: 2px solid #529432;
+    }
+
+    th {
+        background: #ABDD93;
+    }
+</style>
+<div class="card">
+    <div class="card-header bg-primary text-white text-uppercase">
+        <h4>Question Answer </h4>
+    </div>
+    <div class="card-body">
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="fixTableHead">
+                        <table>
+                            <thead>
+                                <tr>
+                                <th>QId</th>
+                                <th>Questions</th>
+                                <th>Option1</th>
+                                <th>Option2</th>
+                                <th>Option3</th>
+                                <th>Option4</th>
+                                <th>Answer</th>
+                                <th>Technology</th>
+                                <th>QuestionLevel</th>
+                                <th>ExperienceShouldBe</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                            @if (Model != null && Model.Count > 0)
+                                {
+                                foreach (var item in Model)
+                                    {
+                                        <tr>
+                                        <td>@item.QuestionsId</td>
+                                        <td>@item.QuestionsName</td>
+                                        <td>@item.Option1</td>
+                                        <td>@item.Option2</td>
+                                        <td>@item.Option3</td>
+                                        <td>@item.Option4</td>
+                                        <td>@item.AnswerName</td>
+                                        <td>@item.Technology</td>
+                                        <td>@item.QuestionLevelType</td>
+                                        <td>@item.ExperienceShouldBe</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                    </div>
+            </div>
+    </div>
+</div>

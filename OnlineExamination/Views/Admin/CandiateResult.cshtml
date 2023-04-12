@@ -1,0 +1,81 @@
+﻿@using OnlineExamination.Models
+@using OnlineExamination.Models.DTO
+@model List<CandidateResultDto>
+@{
+    ViewData["Title"] = "Candidate Result";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+<style type="text/css">
+    .fixTableHead {
+        overflow-y: auto;
+        height: 400px;
+    }
+
+        .fixTableHead thead th {
+            position: sticky;
+            top: 0;
+        }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th,
+    td {
+        padding: 8px 15px;
+        border: 2px solid #529432;
+    }
+
+    th {
+        background: #ABDD93;
+    }
+</style>
+<div  class="card">
+    <div class="card-header bg-primary text-white text-uppercase">
+        <h4>Details of Candidte who have done there test.</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="fixTableHead">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Candidate Name</th>
+                                <th>EmailId</th>
+                                <th>Total Questions</th>
+                                <th>Total Attempt</th>
+                                <th>CorrectAnswers</th>
+                                <th>Result</th>
+                                <th>ExamDate</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @if (Model != null && Model.Count > 0)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td>@item.CandidateName</td>
+                                        <td>@item.EmailId</td>
+                                        <td>@item.NoOfQuestions</td>
+                                        <td>@item.TotalQuestionEttempt</td>
+                                        <td>@item.CorrectAnswers</td>
+                                        <td>@item.Result</td>
+                                        <td>@item.ExamDate</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+</div>

@@ -1,0 +1,115 @@
+﻿@using OnlineExamination.Models
+@using OnlineExamination.Models.DTO
+@model List<OnlineTestDto>
+@{
+    ViewData["Title"] = "OnlineTest";
+    Layout = "~/Views/Shared/_JobseekerLayoutPage.cshtml";
+}
+
+<div class="card">
+    <div class="card-header bg-primary text-white text-uppercase">
+        <h4>Online Exam Inprogress</h4>
+    </div>
+    <div>
+        Total Question:-<label id="lblTotalQuestion">@ViewBag.TotalNoQuestion</label> <br />
+        Total Time Left:-<label id="lblfixtime"></label>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("OnlineTest", "Jobseeker", FormMethod.Post,new { @onsubmit="return validate(this);" }))
+        { 
+            @if (Model != null && Model.Count() > 0)
+            {
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                      
+                           <label>Question - @(i + 1)</label> @Html.DisplayFor(Model=>Model[i].QuestionsName)
+                           @Html.HiddenFor(Model=>Model[i].QuestionsName)
+                    </div>
+                </div>
+            </div>
+                   
+                    <div class="row">
+                        <div class="col-md-6">
+                        <div class="form-group">
+                                <label>@Html.RadioButtonFor(Model => Model[i].SelectedAnswer,Model[i].Option1)@Model[i].Option1</label><br />
+                                <label>@Html.RadioButtonFor(Model => Model[i].SelectedAnswer,Model[i].Option2)@Model[i].Option2</label><br />
+                                <label>@Html.RadioButtonFor(Model => Model[i].SelectedAnswer,Model[i].Option3)@Model[i].Option3</label><br />
+                                <label>@Html.RadioButtonFor(Model => Model[i].SelectedAnswer,Model[i].Option4)@Model[i].Option4</label><br />
+                               
+                                @Html.HiddenFor(Model=>Model[i].Option1)
+                                @Html.HiddenFor(Model=>Model[i].Option2)
+                                @Html.HiddenFor(Model=>Model[i].Option3)
+                                @Html.HiddenFor(Model=>Model[i].Option4)
+                                @Html.HiddenFor(Model=>Model[i].QuestionsId)
+                                @Html.HiddenFor(Model=>Model[i].ExperienceShouldBe)
+                                @Html.HiddenFor(Model=>Model[i].Technology)
+                                @Html.HiddenFor(Model=>Model[i].AnswerName)
+                                @Html.HiddenFor(Model=>Model[i].QuestionLevel)
+                                @Html.HiddenFor(Model=>Model[i].SelectedAnswer)
+                        </div>
+                    </div>
+                 </div>
+                    }
+                    }
+            
+            <br />
+            <div class="form-group">
+                <button style="float:right;" id="trigger" onclick="msg()" type="submit" class="btn btn-primary rounded-0">Submit</button>
+            </div>
+        }
+    </div>
+</div>
+<script type="text/javascript">
+    function startCountDown(timeLeft)
+    {
+        var interval = setInterval(countdown, 1000);
+        update();
+
+        function countdown() {
+           if(--timeLeft > 0)
+           {
+              update();
+           }
+           else
+           {
+           clearInterval(interval);
+           update();
+           completed();
+           }
+        }
+
+        function update()
+        {
+          hours = Math.floor(timeLeft / 3600);
+          minutes = Math.floor((timeLeft % 3600)/60);
+          seconds = timeLeft % 60;
+
+            document.getElementById('lblfixtime').innerHTML = '' + hours + ':' + minutes + ':' + seconds;
+        }
+
+        function completed()
+        {
+            alert("Done with the Online Exam. Will move to the submit");
+            document.getElementById("trigger").click();
+
+            function msg() {
+                alert("Auto click");
+            }
+        }
+}
+
+    function validate(form) {
+        if (!form) {
+            alert('Please correct the errors in the form!');
+            return false;
+        }
+        else {
+            return confirm('Do you really want to submit the form?');
+        }
+    }
+</script>
+

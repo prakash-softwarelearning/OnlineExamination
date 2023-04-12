@@ -1,0 +1,31 @@
+﻿@using OnlineExamination.Models.DTO;
+@model TechnologyDto
+@{
+    ViewData["Title"] = "AddTechnology";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="card">
+    <div class="card-header bg-primary text-white text-uppercase">
+        <h4>Add Technology</h4>
+    </div>
+    <label style="color:green;">@ViewBag.TechDataSave</label>
+    <div class="card-body">
+        <form asp-action="AddTechnology" asp-controller="Admin">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="TechName" class="lable-control"></label>
+                        <input asp-for="TechName" class="form-control" />
+                        <span asp-validation-for="TechName" class="text-danger"></span>
+                    </div>
+                </div>
+                </div> 
+            </br>
+            <div class="form-group">
+                <button style="float:right;" type="submit" class="btn btn-primary rounded-0">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+

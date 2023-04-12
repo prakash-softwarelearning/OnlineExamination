@@ -1,0 +1,40 @@
+﻿@using OnlineExamination.Models.DTO;
+@model StartTestDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_JobseekerLayoutPage.cshtml";
+}
+<div class="card">
+    <div class="card-header bg-primary text-white text-uppercase">
+        <h4>Start Test</h4>
+    </div>
+    <div class="card-body">
+        <form asp-action="Index" asp-controller="Jobseeker">
+            <div class="row">
+                <div class="col-md-6">
+                 <div class="form-group">
+                        
+                        <label asp-for="Technology" class="lable-control"></label>
+                         <select asp-for="Technology" asp-items="ViewBag.Tech" class="form-control">
+                           <option selected="selected" value="">Please select</option>
+                        </select>
+                        <span asp-validation-for="Technology" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="QuestionLevel" class="lable-control"></label>
+                        <select asp-for="QuestionLevel" asp-items="ViewBag.EnumList" class="form-control">
+                           <option selected="selected" value="">Please select</option>
+                        </select>
+                        <span asp-validation-for="QuestionLevel" class="text-danger"></span>
+                </div>
+                </div>
+                </div>
+            <label style="color:red">@ViewBag.Notification</label>
+            <br/>
+            <div class="form-group">
+                <button style="float:right;" type="submit" class="btn btn-primary rounded-0">Start Test</button>
+            </div>
+        </form>
+    </div>
+</div>
+
